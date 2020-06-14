@@ -1,4 +1,4 @@
-# spring-msql-counter
+# spring-mysql-counter
 spring boot with mysql counter incremental application using thread
  
  # Set-up
