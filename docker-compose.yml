@@ -2,7 +2,10 @@ version: '3'
 
 services:
   mysql-docker-container:
+    container_name: mysql-docker-container
     image: mysql:latest
+    ports:
+      - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=root123
       - MYSQL_DATABASE=assignment_app_db
@@ -12,9 +15,12 @@ services:
       - /data/mysql
   assignment-image:
     image: assignment-image
+    restart: on-failure
     build:
       context: ./
       dockerfile: Dockerfile
+    environment:
+      WAIT_HOSTS: mysql:3306
     depends_on:
       - mysql-docker-container
     ports:
