@@ -5,5 +5,5 @@ WORKDIR /build/
 RUN mvn package -DskipTests
 FROM openjdk:8-jre-alpine
 WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/assignment.jar /app/assignment.jar
+COPY --from=MAVEN_BUILD /build/target/assignment.0.0.1-SNAPSHOT.jar /app/assignment.jar
 ENTRYPOINT ["java", "-jar", "assignment.jar"]
