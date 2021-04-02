@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone sources') {
+            steps {
+                git url: 'https://github.com/samaad/spring-msql-counter.git'
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('LocalSonar') {
+                 sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar -X'
+                }
+            }
+        }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
+    }
+}
+
+// https://www.jenkins.io/doc/pipeline/steps/sonar/
