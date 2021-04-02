@@ -11,7 +11,7 @@
 	<groupId>org.demo.assign</groupId>
 	<artifactId>assignment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>assignment</name>
+	<name>react-test-app</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
